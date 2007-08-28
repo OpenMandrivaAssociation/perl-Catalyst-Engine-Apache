@@ -2,8 +2,10 @@
 %define	name	perl-%{module}
 %define	modprefix Catalyst
 
-%define version 1.09
+%define version 1.11
 %define release %mkrel 1
+%define _requires_exceptions perl(A
+
 
 Summary:	Catalyst Apache Engines
 Name:		%{name}
@@ -17,29 +19,26 @@ Url:		http://search.cpan.org/dist/%{module}
 BuildRequires:	perl-devel
 %endif
 BuildRequires:	perl(Catalyst)
-BuildRequires:  perl(Module::Build)
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
-BuildArch:	noarch
 Requires:	apache-mod_perl
+BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This package contains mod_perl handlers for Catalyst.
-
-%define _requires_exceptions perl(A
 
 %prep
 %setup -q -n %{module}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build
+%{__perl} Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
-./Build test
+make test
 
 %install
 %{__rm} -rf %{buildroot}
-./Build install destdir=%buildroot
+%makeinstall_std
 
 %clean
 %{__rm} -rf %{buildroot}
