@@ -21,7 +21,6 @@ BuildRequires:	perl-devel
 BuildRequires:	perl(Catalyst)
 Requires:	apache-mod_perl
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This package contains mod_perl handlers for Catalyst.
