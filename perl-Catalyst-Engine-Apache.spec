@@ -1,33 +1,31 @@
-%define	module	Catalyst-Engine-Apache
-%define	name	perl-%{module}
-%define	modprefix Catalyst
+%define	upstream_name	 Catalyst-Engine-Apache
+%define upstream_version 1.12
 
-%define version 1.12
-%define release %mkrel 3
 %define _requires_exceptions perl(A
 
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	%mkrel 1
 
 Summary:	Catalyst Apache Engines
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/%{modprefix}/%{module}-%{version}.tar.bz2
-Url:		http://search.cpan.org/dist/%{module}
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Catalyst/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
 BuildRequires:	perl(Catalyst)
-Requires:	apache-mod_perl
-BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+Requires:  apache-mod_perl
 
 %description
 This package contains mod_perl handlers for Catalyst.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -46,8 +44,5 @@ make test
 %files
 %defattr(-,root,root)
 %doc README Changes
-%{perl_vendorlib}/%{modprefix}
+%{perl_vendorlib}/Catalyst
 %{_mandir}/man3/*
-
-
-
