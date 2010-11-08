@@ -1,5 +1,5 @@
 %define	upstream_name	 Catalyst-Engine-Apache
-%define upstream_version 1.12
+%define upstream_version 1.16
 
 %define _requires_exceptions perl(A
 
