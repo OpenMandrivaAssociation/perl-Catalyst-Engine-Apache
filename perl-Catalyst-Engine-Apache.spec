@@ -8,14 +8,14 @@
 %endif
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	%{upstream_version}
+Release:	6
 
 Summary:	Catalyst Apache Engines
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Catalyst/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://dev.catalystframework.org/svnweb/Catalyst/browse/Catalyst-Engine-Apache
+Source0:	https://cpan.metacpan.org/authors/id/F/FL/FLORA/Catalyst-Engine-Apache-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
