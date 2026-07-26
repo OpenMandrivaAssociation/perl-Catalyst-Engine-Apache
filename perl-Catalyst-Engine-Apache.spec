@@ -1,6 +1,4 @@
 %define	upstream_name	 Catalyst-Engine-Apache
-%define upstream_version 1.16
-
 %if %{_use_internal_dependency_generator}
 %define __noautoreq 'perl\\(A(.*)\\)'
 %else
@@ -8,14 +6,14 @@
 %endif
 
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	1.16
+Release:	7
 
 Summary:	Catalyst Apache Engines
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://dev.catalystframework.org/svnweb/Catalyst/browse/Catalyst-Engine-Apache
-Source0:	https://cpan.metacpan.org/authors/id/F/FL/FLORA/Catalyst-Engine-Apache-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/F/FL/FLORA/Catalyst-Engine-Apache-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -27,7 +25,7 @@ Requires:	apache-mod_perl
 This package contains mod_perl handlers for Catalyst.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -56,8 +54,7 @@ make test
 
 * Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 1.120.0-1mdv2011.0
 + Revision: 401785
-- rebuild using %%perl_convert_version
-- fixed license field
+- rebuild using %1.16 fixed license field
 
 * Wed Jul 30 2008 Thierry Vignaud <tv@mandriva.org> 1.12-3mdv2009.0
 + Revision: 255509
